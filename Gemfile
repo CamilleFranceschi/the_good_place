@@ -23,6 +23,7 @@ gem 'jquery-fileupload-rails'
 gem 'coffee-rails'
 
 gem "geocoder"
+# gem "pundit"
 
 group :development, :test do
   gem 'binding_of_caller'
