@@ -36,8 +36,6 @@ class PlacesController < ApplicationController
     @place.save!
   end
 
-
-
   private
 
   def set_place
