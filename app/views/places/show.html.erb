@@ -1,0 +1,10 @@
+<h1>Places#show</h1>
+<p>Find me in app/views/places/show.html.erb</p>
+<%= @place.name %>
+<% if @place.photos.any? %>
+  <% @place.photos.each do |photo| %>
+    <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
+  <% end %>
+<% else %>
+  <p>nothing</p>
+<% end %>
