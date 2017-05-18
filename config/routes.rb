@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'places#index'
-  resources :users, only: [:show, :edit, :udpate]
+  resources :users, only: [:show, :udpate]
   resources :places, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   # cloudinary
   # mount Attachinary::Engine => "/attachinary"

@@ -1,17 +1,17 @@
 class UsersController < ApplicationController
-  # before_action :set_user, only: [ :show, :edit, :update]
+  before_action :set_user, only: [ :show, :edit, :update]
 
-  # def show
-  # end
+  def show
+  end
 
   # def edit
   # end
 
-  # def update
-  #   @user.update(user_params)
-  #   @user.save!
-  #   redirect_to user_path(@user)
-  # end
+  def update
+    @user.update(user_params)
+    @user.save!
+    redirect_to user_path(@user)
+  end
 
   private
 
@@ -21,6 +21,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :photo)
+    params.require(:user).permit(:email, :first_name, :last_name, :password, :photo)
   end
 end
