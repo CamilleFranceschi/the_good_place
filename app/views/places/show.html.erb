@@ -8,3 +8,14 @@
 <% else %>
   <p>nothing</p>
 <% end %>
+
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      var coord = <%= raw @place_coordinates.to_json %>;
+      alert('Place coordinates are ' + coord.lat + ', ' + coord.lng);
+      alert('<%= j @alert_message %>');
+    });
+  <% end %>
+<% end %>
