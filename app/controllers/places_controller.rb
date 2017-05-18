@@ -6,6 +6,8 @@ class PlacesController < ApplicationController
   end
 
   def show
+    @alert_message = "You are viewing #{@place.name}"
+    @place_coordinates = { lat: @place.latitude, lng: @place.longitude }
   end
 
   def new
