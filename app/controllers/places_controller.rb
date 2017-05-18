@@ -3,6 +3,7 @@ class PlacesController < ApplicationController
   before_action :set_place, only: [ :show]
   def index
     # @places = Place.all
+    # we take only flats with lat and long
     @places = Place.where.not(latitude: nil, longitude: nil)
 
     @hash = Gmaps4rails.build_markers(@places) do |place, marker|
