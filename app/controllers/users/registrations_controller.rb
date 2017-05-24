@@ -22,11 +22,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  private
+  # private
 
-  def user_params
-    params.require(:user).permit(:email, :first_name, :last_name, :password, :photo)
-  end
+  # def sign_up_params
+  #   params.require(:user).permit(:email, :first_name, :last_name, :password, :password_confirmation, :photo)
+  # end
   # DELETE /resource
   # def destroy
   #   super

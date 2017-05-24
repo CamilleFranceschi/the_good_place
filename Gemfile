@@ -25,6 +25,10 @@ gem 'coffee-rails'
 gem "geocoder"
 # gem "pundit"
 
+# Mails
+gem "actionmailer"
+
+
 gem "coffee-rails"
 gem "gmaps4rails"
 
@@ -41,6 +45,8 @@ group :development, :test do
   gem 'spring'
   gem 'listen', '~> 3.0.5'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  # mails
+  gem "letter_opener"
 end
 
 

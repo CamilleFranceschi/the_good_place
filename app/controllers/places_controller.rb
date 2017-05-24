@@ -23,9 +23,16 @@ class PlacesController < ApplicationController
   end
 
   def create
-    @place = Place.new(place_params)
-    @place.save!
-    redirect_to places_path
+    @place = current_user.places.build(place_params)
+
+    if @place.save
+      if  current_user.places.count == 1
+        PlaceMailer.thank_you(@place).deliver_now
+      end
+      redirect_to places_path
+    else
+      render :new
+    end
   end
 
   def edit
