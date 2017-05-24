@@ -8,6 +8,6 @@ class UserMailer < ApplicationMailer
   def welcome(user)
     @user = user
 
-    mail(to: "to@example.org", subject: "Welcome #{@user.first_name}")
+    mail(to: "#{@user.email}", subject: "Welcome #{@user.first_name}")
   end
 end

@@ -9,6 +9,6 @@ class PlaceMailer < ApplicationMailer
     @place = place
     @user = @place.user
 
-    mail(to: @place.user.email, subject: "Thanks for your contribution with #{@place.name}")
+    mail(to: "#{@place.user.email}", subject: "Thanks for your contribution with #{@place.name}")
   end
 end
