@@ -9,12 +9,19 @@
   <p>nothing</p>
 <% end %>
 
-<h3>Reviews</h3>
+<h3 id="review-title">
+  <%= render 'places/review_title' , reviews: @place.reviews %>
+</h3>
 
-<% @place.reviews.each do |review| %>
-  <h4><%= review.name %></h4>
-  <p><%= review.content %></p>
-<% end %>
+<div id="reviews">
+  <% if @place.reviews.blank? %>
+    <%= render "places/no_reviews", place: @place %>
+  <% else %>
+    <% @place.reviews.each do |review| %>
+      <%= render 'reviews/show', review: review %>
+    <% end %>
+  <% end %>
+</div>
 
 <%= render 'reviews/form', place: @place, review: @review %>
 

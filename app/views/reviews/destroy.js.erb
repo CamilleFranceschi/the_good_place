@@ -1,0 +1,8 @@
+// Hide the review selected
+$("#review-<%= @review_id %>").slideUp();
+// update the number of reviews / change the html content
+$('#review-title').html("<%= j render 'places/review_title' , reviews: @place.reviews %>");
+
+<% if @place.reviews.blank? %>
+  $('#reviews').html("<%= j render 'places/no_reviews', place: @place %>");
+<% end %>
