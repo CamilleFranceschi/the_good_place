@@ -1,0 +1,6 @@
+<%= simple_form_for([place, review], remote: true) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :content %>
+  <%= f.button :submit %>
+<% end %>
+

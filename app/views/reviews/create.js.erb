@@ -1,0 +1,17 @@
+
+// Here you will write *javascript* that would be executed by the browser in remote true mode
+// If error to be sure tha the validations work and so we will not have the bad reviews added
+console.log("resr");
+<% if @review.errors.any? %>
+  // Render new review form with errors
+  $('#new_review').html("<%= j render 'reviews/form', place: @place, review: @review %>");
+<% else %>
+  // Create a paragraph for the new review. But hide it.
+  var new_review = $("<%= j render 'reviews/show', review: @review %>").hide();
+  // Add it to the DOM, at the end of the existing reviews. It's still hidden.
+  $('#reviews').append(new_review);
+  // Show the new review with an animation!
+  new_review.slideDown();
+  // Reset the form
+  $('#new_review').html("<%= j render 'reviews/form', place: @place, review: Review.new %>");
+<% end %>

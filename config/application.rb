@@ -20,6 +20,9 @@ Bundler.require(*Rails.groups)
 
 module TheGoodPlace
   class Application < Rails::Application
+    # Added for remote true
+    config.action_view.embed_authenticity_tokeb_in_remote_forms = true
+
     config.generators do |generate|
       generate.assets false
       generate.helper false
@@ -30,3 +33,4 @@ module TheGoodPlace
     # -- all .rb files in that directory are automatically loaded.
   end
 end
+

@@ -16,6 +16,8 @@ class PlacesController < ApplicationController
   def show
     @alert_message = "You are viewing #{@place.name}"
     @place_coordinates = { lat: @place.latitude, lng: @place.longitude }
+
+    @review = Review.new
   end
 
   def new

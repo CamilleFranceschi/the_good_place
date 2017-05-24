@@ -5,6 +5,7 @@ class Place < ApplicationRecord
 
   has_attachments :photos, maximum: 8
   belongs_to :user
+  has_many :reviews, dependent: :destroy
 
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
