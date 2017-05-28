@@ -24,7 +24,8 @@
 
               <p>Very cool stuff, useful and smart</p>
             </div>
-            <a class="card-link" href="#" ></a>
+            <%= link_to "", "#", class: "card-link", id: "#{place.id}" %>
+            <!-- <a class="card-link" href="#" ></a> -->
             </div>
           <% end %>
         </div>
@@ -35,7 +36,7 @@
 
 
 <% content_for(:after_js) do %>
-  <%= javascript_tag do %>
+  <script>
     $(document).ready(function() {
       <!-- style snazzy map -->
       var styles = [
@@ -127,7 +128,21 @@
           <!-- // => https://developers.google.com/maps/documentation/javascript/reference#MapOptions -->
         },
       internal: { id: 'map' } }, function() {
+
         markers = handler.addMarkers(<%= raw @hash.to_json %>);
+
+         _.each(<%= raw @hash.to_json %>, function(json, index){
+          var marker = markers[index];
+          $("#" + json.id).on('mouseenter', function() {
+            marker.getServiceObject().setAnimation(google.maps.Animation.BOUNCE);
+          });
+          $("#" + json.id).on('mouseleave', function() {
+            marker.getServiceObject().setAnimation(null);
+          });
+        });
+
+
+
         handler.bounds.extendWith(markers);
         <!-- zoom the map at the good level -->
         handler.fitMapToBounds();
@@ -138,5 +153,5 @@
         }
       });
     });
-  <% end %>
+  </script>>
 <% end %>
