@@ -1,0 +1,8 @@
+<%=form_tag(places_path, method: 'get') do %>
+  <%= text_field_tag :address, params[:address], placeholder: 'Type your city', class: "navbar-wagon-search-input" %>
+  <%= submit_tag 'Find the good place!', class: "btn-large" %>
+<% end %>
+
+
+<!-- text_field_tag 'query', 'Enter your search query here' -->
+<!-- # => <input id="query" name="query" type="text" value="Enter your search query here" /> -->

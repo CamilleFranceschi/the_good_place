@@ -3,11 +3,12 @@ $(document).ready(function() {
 
   if (place_address) {
     var autocomplete = new google.maps.places.Autocomplete(place_address, { types: ['geocode'] });
+    // google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChanged);
     google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChanged);
     google.maps.event.addDomListener(place_address, 'keydown', function(e) {
-      if (e.keyCode == 13) {
-        e.preventDefault(); // Do not submit the form on Enter.
-      }
+      // if (e.keyCode == 13) {
+      //   e.preventDefault(); // Do not submit the form on Enter.
+      // }
     });
   }
 });
