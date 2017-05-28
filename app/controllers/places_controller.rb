@@ -6,7 +6,7 @@ class PlacesController < ApplicationController
     # we take only flats with lat and long
     @address = params[:address]
     if @address
-      @places = Place.near(@address, 10)
+      @places = Place.near(@address, 9)
     else
       @places = Place.where.not(latitude: nil, longitude: nil)
     end
@@ -14,6 +14,12 @@ class PlacesController < ApplicationController
     @hash = Gmaps4rails.build_markers(@places) do |place, marker|
       marker.lat place.latitude
       marker.lng place.longitude
+      marker.picture ({
+        "url" => ApplicationController.helpers.asset_path("marker-bar-location.png"),
+        "width" => 60,
+        "height" => 90,
+      })
+      marker.json({id: place.id})
       marker.infowindow render_to_string(partial: "infowindow", locals: { place: place })
     end
   end
