@@ -1,0 +1,5 @@
+<div id="review-<%= review.id %>">
+  <h4><%= review.name %></h4>
+  <p><%= review.content %></p>
+  <%= link_to "Delete", review_path(review), method: :delete, remote: true %>
+</div>

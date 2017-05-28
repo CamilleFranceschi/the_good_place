@@ -9,6 +9,22 @@
   <p>nothing</p>
 <% end %>
 
+<h3 id="review-title">
+  <%= render 'places/review_title' , reviews: @place.reviews %>
+</h3>
+
+<div id="reviews">
+  <% if @place.reviews.blank? %>
+    <%= render "places/no_reviews", place: @place %>
+  <% else %>
+    <% @place.reviews.each do |review| %>
+      <%= render 'reviews/show', review: review %>
+    <% end %>
+  <% end %>
+</div>
+
+<%= render 'reviews/form', place: @place, review: @review %>
+
 
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>

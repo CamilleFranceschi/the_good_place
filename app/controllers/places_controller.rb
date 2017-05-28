@@ -4,18 +4,25 @@ class PlacesController < ApplicationController
   def index
     # @places = Place.all
     # we take only flats with lat and long
-    @places = Place.where.not(latitude: nil, longitude: nil)
+    @address = params[:address]
+    if @address
+      @places = Place.near(@address, 10)
+    else
+      @places = Place.where.not(latitude: nil, longitude: nil)
+    end
 
     @hash = Gmaps4rails.build_markers(@places) do |place, marker|
       marker.lat place.latitude
       marker.lng place.longitude
-      # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
+      marker.infowindow render_to_string(partial: "infowindow", locals: { place: place })
     end
   end
 
   def show
     @alert_message = "You are viewing #{@place.name}"
     @place_coordinates = { lat: @place.latitude, lng: @place.longitude }
+    @review = Review.new
+    @reviews = @place.reviews
   end
 
   def new
