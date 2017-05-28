@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+# puts 'Creating votes...'
+# john.up_votes startup_stash
+# paul.up_votes startup_stash
+# george.up_votes startup_stash
+
+# ringo.up_votes startup_launch_list
