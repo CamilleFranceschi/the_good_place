@@ -12,4 +12,6 @@ class User < ApplicationRecord
   def send_welcome_email
     UserMailer.welcome(self).deliver_now
   end
+
+  acts_as_voter
 end
