@@ -8,6 +8,7 @@ gem 'figaro'
 gem 'jbuilder', '~> 2.0'
 gem 'devise'
 gem 'redis'
+gem 'pundit'
 
 gem 'sass-rails'
 gem 'jquery-rails'
@@ -37,7 +38,7 @@ source 'https://rails-assets.org' do
 end
 
 # react
-gem 'js-routes'
+# gem 'js-routes'
 gem "react-rails"
 source 'https://rails-assets.org' do
   gem 'rails-assets-classnames'
@@ -57,5 +58,3 @@ group :development, :test do
   # mails
   gem "letter_opener"
 end
-
-
