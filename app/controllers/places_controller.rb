@@ -1,6 +1,8 @@
 class PlacesController < ApplicationController
   # skip_after_action :verify_policy_scoped, only: [:search, :index]
   before_action :set_place, only: [ :show, :update]
+  # pundit
+  authorize @place
   def index
     # @places = Place.all
     # we take only flats with lat and long
