@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
 
+  # get 'hello_world', to: 'hello_world#index'
   devise_for :users
 
   # devise_for :users, :controllers => { registrations: 'registrations' }
-  root to: 'site#index'
+  root to: 'places#index'
   # resources :users, only: [:show, :udpate]
   # resources :places, only: [:index, :show, :new, :create, :edit, :update] do
   #   resources :reviews, only: [:new, :create]

@@ -6,7 +6,7 @@
     <%= action_cable_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
   </head>
   <body>
     <%= render 'shared/navbar' %>
@@ -22,7 +22,7 @@
     <!-- cloudinary -->
     <%= cloudinary_js_config %> <!-- Append this after the main `javascript_include_tag`. -->
     <%= yield(:after_js) %>
-    <div id="root"></div>
+    <%= javascript_pack_tag 'main' %>
   </body>
-  <!-- <script src="/bundle.js"></script> -->
+
 </html>
