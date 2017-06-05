@@ -4,7 +4,20 @@ class PlacePolicy < ApplicationPolicy
       scope.all
     end
   end
+
+  def show?
+    true
+  end
+
   def create?
     return true
+  end
+
+  def destroy?
+    record.user == user
+  end
+
+  def create?
+    record.user == user
   end
 end

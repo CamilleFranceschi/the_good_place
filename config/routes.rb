@@ -12,4 +12,12 @@ Rails.application.routes.draw do
   # cloudinary
   mount Attachinary::Engine => "/attachinary"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  # Api
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :places, only: [ :index, :show, :update, :create, :destroy ]
+    end
+  end
+
 end
