@@ -23,6 +23,6 @@
     <%= cloudinary_js_config %> <!-- Append this after the main `javascript_include_tag`. -->
     <%= yield(:after_js) %>
     <%= javascript_pack_tag 'main' %>
+    <%= javascript_pack_tag 'webpack-bundle' %>
   </body>
-
 </html>

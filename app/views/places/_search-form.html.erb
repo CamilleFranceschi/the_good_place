@@ -1,4 +1,4 @@
-<%=form_tag(places_path, method: 'get') do %>
+<%=form_tag(root_path, method: 'get') do %>
   <%= text_field_tag :address, params[:address], placeholder: 'Type your city', class: "navbar-wagon-search-input" %>
   <%= submit_tag 'Find the good place!', class: "btn-large" %>
 <% end %>

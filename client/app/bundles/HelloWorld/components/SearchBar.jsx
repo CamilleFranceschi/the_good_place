@@ -1,4 +1,4 @@
-// import React, { Component } from 'react';
+import React from 'react';
 
 class SearchBar extends React.Component {
 // to initialize state
@@ -63,4 +63,4 @@ class SearchBar extends React.Component {
 
 }
 
-// export default SearchBar;
+export default SearchBar;
