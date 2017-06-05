@@ -1,4 +1,8 @@
 {
+  "scripts": {
+    "postinstall": "cd client && yarn install"
+  },
+
   "dependencies": {
     "google-map-react": "^0.24.0",
     "react-redux": "^5.0.5",
