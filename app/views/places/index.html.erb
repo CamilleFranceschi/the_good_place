@@ -5,6 +5,7 @@
         <div id="map" style="width: 100%; height: 90vh;"></div>
       </div>
       <div class="col-xs-5">
+
         <%= render 'search-form' %>
         <%#= react_component( "SearchBar") %>
         <%#= react_component("SearchBar", prerender: false) %>
@@ -14,6 +15,7 @@
 
         <div class="cards">
           <% @places.each do |place| %>
+                <%=  %>
             <%= place.name %>
             <% if place.photos.any? %>
               <div class="card" id ="card-home"
