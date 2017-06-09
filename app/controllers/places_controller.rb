@@ -13,6 +13,16 @@ class PlacesController < ApplicationController
       @places = Place.where.not(latitude: nil, longitude: nil)
     end
 
+    @photosurl = []
+
+    @places.each_with_index do |place, index|
+      if place.photos[0]
+        @photosurl << {"#{index}": place.photos[0].path }.to_json
+      else
+       @photosurl << "#"
+      end
+    end
+
     @hash = Gmaps4rails.build_markers(@places) do |place, marker|
       marker.lat place.latitude
       marker.lng place.longitude
