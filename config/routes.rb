@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   # Api
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
+      get 'photos', to:"places#index_photos"
       resources :places, only: [ :index, :show, :update, :create, :destroy ]
     end
   end

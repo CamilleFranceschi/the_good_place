@@ -1,5 +1,5 @@
 class Api::V1::PlacesController < Api::V1::BaseController
-  acts_as_token_authentication_handler_for User, except: [ :index, :show ]
+  acts_as_token_authentication_handler_for User, except: [ :index, :index_photos, :show ]
   before_action :set_place, only: [ :show, :update, :destroy]
   def index
     @places = policy_scope(Place)
@@ -10,35 +10,40 @@ class Api::V1::PlacesController < Api::V1::BaseController
 
     else
       @places = Place.where.not(latitude: nil, longitude: nil)
-            # @photos = @places.photos.first
-      # @photos_url = @photos.map { |photo| Cloudinary::Utils.cloudinary_url(photo.path, :secure => true, :width => 100,:height => 150, :crop => :fill)}
-      # @photos_url = @photos.map { |photo| Cloudinary::Utils.cloudinary_url(photo.path, :secure => true, :width => 100,:height => 150, :crop => :fill)}
+    end
+  end
+
+  def index_photos
+    @places = policy_scope(Place)
+
+    @address = params[:address]
+    if @address
+      @places = Place.near(@address, 9)
+    else
+      @places = Place.where.not(latitude: nil, longitude: nil)
     end
 
     @photosurl = []
 
+    # @places.each do |place|
+    #   if place.photos[0]
+    #     @photosurl << {"#{place.id}":  Cloudinary::Utils.cloudinary_url(place.photos[0].path, :secure => true, :width => 100,:height => 150, :crop => :fill) }
+    #   else
+    #     @photosurl << {"#{place.id}": "#" }
+    #   end
+    # end
     @places.each do |place|
       if place.photos[0]
-        @photosurl << {"#{place.id}":  Cloudinary::Utils.cloudinary_url(place.photos[0].path, :secure => true, :width => 100,:height => 150, :crop => :fill) }
+        @photosurl << {"id": "#{place.id}", "photo_url":  Cloudinary::Utils.cloudinary_url(place.photos[0].path, :secure => true, :width => 100,:height => 150, :crop => :fill) }
       else
-       @photosurl << {"#{place.id}": "#" }
+        @photosurl << {"id": "#{place.id}", "photo_url": "#" }
       end
     end
-
-
-
-    # @image=Cloudinary::Utils.cloudinary_url(place.photo, :secure => true, :width => 100,:height => 150, :crop => :fill)
-
-    # => "https://res.cloudinary.com/demo/image/upload/c_fill,h_150,w_100/sample.jp
-
   end
 
 
   def show
     @photos = @place.photos
-    # => "v1495140480/sf9blb9tm1zj9lqao9b1.png"
-    # Cloudinary::Utils.cloudinary_url(photo.path, :secure => true, :width => 100,:height => 150, :crop => :fill)
-    # => "https://res.cloudinary.com/dymvgezcn/image/upload/c_fill,h_150,w_100/v1495140480/sf9blb9tm1zj9lqao9b1.png"
     @photos_url = @photos.map { |photo| Cloudinary::Utils.cloudinary_url(photo.path, :secure => true, :width => 100,:height => 150, :crop => :fill)}
   end
 
@@ -81,7 +86,7 @@ class Api::V1::PlacesController < Api::V1::BaseController
   end
 
   def render_error
-    render json: { errors: @restaurant.errors.full_messages },
+    render json: { errors: @place.errors.full_messages },
       status: :unprocessable_entity
   end
 end
