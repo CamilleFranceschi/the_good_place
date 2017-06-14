@@ -34,7 +34,7 @@ class Api::V1::PlacesController < Api::V1::BaseController
     # end
     @places.each do |place|
       if place.photos[0]
-        @photosurl << {"id": "#{place.id}", "photo_url":  Cloudinary::Utils.cloudinary_url(place.photos[0].path, :secure => true, :width => 100,:height => 150, :crop => :fill) }
+        @photosurl << {"id": "#{place.id}", "photo_url":  Cloudinary::Utils.cloudinary_url(place.photos[0].path, :secure => true, :width => 100,:height => 80, :crop => :fill) }
       else
         @photosurl << {"id": "#{place.id}", "photo_url": "#" }
       end
@@ -44,7 +44,7 @@ class Api::V1::PlacesController < Api::V1::BaseController
 
   def show
     @photos = @place.photos
-    @photos_url = @photos.map { |photo| Cloudinary::Utils.cloudinary_url(photo.path, :secure => true, :width => 100,:height => 150, :crop => :fill)}
+    @photos_url = @photos.map { |photo| Cloudinary::Utils.cloudinary_url(photo.path, :secure => true, :width => 100,:height => 80, :crop => :fill)}
   end
 
 

@@ -1,5 +1,5 @@
 class Place < ApplicationRecord
-  validates :description, presence: :true, uniqueness: :true
+  validates :description, presence: :true
   validates :name, presence: :true, uniqueness: :true
   validates :address, presence: :true
 

@@ -7,9 +7,29 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-# puts 'Creating votes...'
-# john.up_votes startup_stash
-# paul.up_votes startup_stash
-# george.up_votes startup_stash
+puts 'Creating users...'
+john = User.create!(email: 'john@beatles.com', password: 'testtest')
+paul = User.create!(email: 'paul@beatles.com', password: 'testtest')
+ringo = User.create!(email: 'ringo@beatles.com', password: 'testtest')
+george = User.create!(email: 'george@beatles.com', password: 'testtest')
 
-# ringo.up_votes startup_launch_list
+puts 'Creating Places...'
+nuba = Place.create!(
+  name: 'Le Nuba',
+  description: "super",
+  address: "20 boulevard Arago Paris"
+)
+
+wanderlust = Place.create!(
+  name: 'Le Wanderlust',
+  description: "super",
+  address: "26 boulevard Arago Paris"
+)
+
+puts 'Creating votes...'
+john.up_votes nuba
+paul.up_votes nuba
+george.up_votes nuba
+ringo.up_votes wanderlust
+
+puts 'Finished!'
