@@ -1,6 +1,6 @@
-<%=form_tag(root_path, method: 'get') do %>
-  <%= text_field_tag :address, params[:address], placeholder: 'Type your city', class: "navbar-wagon-search-input" %>
-  <%= submit_tag 'Find the good place!', class: "btn-large" %>
+<%=form_tag(root_path, method: 'get', class: "form-inline") do %>
+  <%= text_field_tag :address, params[:address], placeholder: 'Type your city', class: "form-control" %>
+  <%= submit_tag 'Find the good place!', class: "btn btn-large btn-primary" %>
 <% end %>
 
 

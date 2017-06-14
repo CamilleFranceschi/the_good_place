@@ -45,7 +45,6 @@ end
 #   gem 'rails-assets-classnames'
 # end
 
-gem "react_on_rails", "8.0.0"
 
 gem 'acts_as_votable'
 
