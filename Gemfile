@@ -61,6 +61,3 @@ group :development, :test do
   # mails
   gem "letter_opener"
 end
-
-gem 'mini_racer', platforms: :ruby
-gem 'webpacker_lite'

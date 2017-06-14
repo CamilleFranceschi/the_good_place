@@ -8,9 +8,3 @@ public/assets
 
 # Ignore application configuration
 /config/application.yml
-# React on Rails
-npm-debug.log*
-node_modules
-
-# Generated js bundles
-/public/webpack/*
